@@ -1,7 +1,6 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import { VertexAI, GenerateContentRequest } from "@google-cloud/vertexai";
-import {} from "@google/generative-ai";
 
 dotenv.config();
 
@@ -35,7 +34,6 @@ app.get("/", async (_req: Request, res: Response) => {
       result?.response?.candidates?.[0]?.content?.parts?.[0]?.text;
     res.send(responseText);
   } catch (error) {
-    console.dir(error);
     res.status(500).send("Error communicating with Vertex AI");
   }
 });
