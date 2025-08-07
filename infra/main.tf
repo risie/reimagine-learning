@@ -19,24 +19,10 @@ resource "google_cloud_run_service" "api" {
     spec {
       containers {
         image = var.container_image
-
-        env {
-          name  = "SUPABASE_URL"
-          value = var.supabase_url
-        }
-        env {
-          name  = "SUPABASE_KEY"
-          value = var.supabase_key
-        }
-        env {
-          name  = "GOOGLE_API_KEY"
-          value = var.google_api_key
-        }
       }
       service_account_name = google_service_account.app.email
     }
   }
-
   traffic {
     percent         = 100
     latest_revision = true
