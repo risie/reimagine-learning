@@ -1,0 +1,6 @@
+project_id      = "your-gcp-project-id"
+region          = "europe-west1"
+container_image = "gcr.io/your-gcp-project-id/your-image:latest"
+supabase_url    = "https://your-supabase-project.supabase.co"
+supabase_key    = "your-supabase-service-key"
+google_api_key  = "your-google-api-key"
