@@ -1,0 +1,13 @@
+# App
+*/node_modules
+*/dist
+.env
+service-account.json
+# Infra
+terraform.tfvars
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+crash.log
+# Other
+.DS_Store
