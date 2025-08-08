@@ -10,15 +10,12 @@ Before running the app, make sure you have:
 
 1. **A Google Cloud Storage Service Account**
    - Download the service account credentials as a JSON file (`service-account.json`) from the [Google Cloud Console](https://console.cloud.google.com/iam-admin/serviceaccounts).
-   - Place the `service-account.json` file in the project directory or specify its path via an environment variable.
+   - Place the `service-account.json` file in the project directory or specify its path via an environment variable. Give the account the same permissions to use vertex ai.
 
 2. **Environment Variables**
    - The app requires several environment variables for configuration (such as API keys, storage bucket name, etc.).
    - Refer to your team or project documentation for the specific variables required.
    - You can set these variables in your shell, or use a `.env` file if supported.
-
-3. **Docker (for container usage)**
-   - Ensure Docker is installed and running on your system: [Get Docker](https://docs.docker.com/get-docker/)
 
 ---
 
@@ -36,23 +33,18 @@ Before running the app, make sure you have:
 
 ---
 
-## Running as a Container
+## Deploying to Google App Engine (GCP)
 
+Once your infrastructure is provisioned (e.g., with Terraform), you can deploy and remove your app using the Google Cloud CLI (`gcloud`).
 
-2. **Run the app using Docker Compose**
+### Deploying the App
 
-   A `compose.yml` file is provided for convenience. It builds the image, sets up environment variables, and mounts the service account file automatically.
-
+1. Ensure your `app.yaml` is present in the project root and correctly configured for App Engine Standard.
+2. Deploy your app:
    ```sh
-   docker compose up --build
+   gcloud app deploy app.yaml
    ```
-
-   This will:
-   - Build the Docker image from the local directory.
-   - Expose port 8080.
-   - Set required environment variables (`GOOGLE_APPLICATION_CREDENTIALS`, `PORT`).
-   - Mount your `service-account.json` file as a read-only secret.
-
-   You can customize the compose file as needed for your environment.
-
----
+3. To verify deployment:
+   ```sh
+   gcloud app browse
+   ```

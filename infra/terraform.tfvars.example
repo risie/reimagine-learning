@@ -1,3 +1,2 @@
 project_id      = "your-gcp-project-id"
 region          = "europe-west1"
-container_image = "docker.io/testcontainers/helloworld:1.2.0"
